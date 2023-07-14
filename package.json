@@ -1,8 +1,12 @@
 {
   "name": "@sls-natgateway/root",
   "private": true,
-  "version": "1.0.0",
+  "version": "0.0.6",
   "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/PChol22/sls-natgateway.git"
+  },
   "scripts": {
     "build": "nx run-many --target=build --all --parallel=4",
     "deploy": "nx run-many --target=deploy --all --parallel=4",
@@ -17,6 +21,7 @@
     "lint-fix-all": "nx run-many --target=lint-fix-all --all --parallel=4",
     "package": "nx run-many --target=package --all --parallel=4",
     "postinstall": "husky install && syncpack format",
+    "publish-all": "pnpm run package && nx run-many --target=publish-package --all --parallel=4",
     "test": "pnpm run format-check && nx run-many --targets=test-circular,test-linter,test-type,test-unit --all --parallel=4",
     "test-affected": "pnpm run format-check && nx affected --targets=test-circular,test-linter,test-type,test-unit",
     "test-circular": "nx run-many --target=test-circular --all --parallel=4",
@@ -30,7 +35,6 @@
     "@swarmion/nx-plugin": "^0.28.2",
     "@typescript-eslint/eslint-plugin": "^5.51.0",
     "@typescript-eslint/parser": "^5.51.0",
-    "aws-sdk": "^2.1272.0",
     "dependency-cruiser": "^12.11.1",
     "eslint": "^8.29.0",
     "eslint-import-resolver-typescript": "^3.5.3",
@@ -38,7 +42,6 @@
     "eslint-plugin-prefer-arrow": "^1.2.3",
     "husky": "^8.0.2",
     "lint-staged": "^13.1.0",
-    "lodash": "^4.17.21",
     "npm-audit-resolver": "^3.0.0-7",
     "nx": "16.1.0",
     "prettier": "^2.8.1",

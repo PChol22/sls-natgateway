@@ -2,9 +2,6 @@
 node_modules
 .npm
 
-# Serverless directories
-.serverless
-
 # Webpack directories
 .webpack
 
@@ -48,3 +45,6 @@ nx-cache
 
 # CDK output
 **/cdk.out
+
+packages/**/.npmrc
+packages/**/README.md

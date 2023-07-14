@@ -1,7 +1,6 @@
 {
-  "name": "@sls-natgateway/serverless-configuration",
-  "private": true,
-  "version": "1.0.0",
+  "name": "@sls-natgateway/construct",
+  "version": "0.0.6",
   "license": "UNLICENSED",
   "sideEffects": false,
   "files": [
@@ -11,7 +10,14 @@
   "main": "dist/index.cjs",
   "module": "dist/index.js",
   "types": "dist/types/index.d.ts",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/PChol22/sls-natgateway.git"
+  },
   "scripts": {
+    "build": "npm run build-cdk && npm run build-lambda",
+    "build-cdk": "tsup src/index.ts --dts --format cjs --target node18 --outDir dist",
+    "build-lambda": "tsup src/lambda.ts --format cjs --target node18 --outDir dist",
     "clean": "rimraf dist *.tsbuildinfo",
     "format-check": "prettier --check . --ignore-path ../../.prettierignore",
     "format-fix": "prettier --write . --ignore-path ../../.prettierignore",
@@ -22,18 +28,21 @@
     "package-transpile": "tsup",
     "package-types": "tsc -p tsconfig.build.json",
     "package-types-aliases": "tsc-alias -p tsconfig.build.json",
+    "publish-package": "cp ../../README.md ./README.md && pnpm publish --access public",
     "test": "nx run format-check && nx run test-linter && nx run test-type && nx run test-circular",
     "test-circular": "pnpm depcruise --config -- src",
     "test-linter": "pnpm linter-base-config .",
     "test-type": "tsc --noEmit --emitDeclarationOnly false",
     "watch": "pnpm clean && concurrently 'pnpm:package-* --watch'"
   },
-  "dependencies": {
-    "@swarmion/serverless-helpers": "^0.28.2"
-  },
+  "dependencies": {},
   "devDependencies": {
+    "@aws-sdk/client-s3": "^3.370.0",
+    "@sls-natgateway/shared": "workspace:^",
     "@types/node": "^18.11.13",
+    "aws-cdk-lib": "^2.87.0",
     "concurrently": "^8.0.0",
+    "constructs": "^10.2.69",
     "dependency-cruiser": "^12.11.1",
     "eslint": "^8.29.0",
     "prettier": "^2.8.1",
@@ -43,5 +52,9 @@
     "tsup": "^6.7.0",
     "typescript": "^5.0.0",
     "vitest": "0.30.0"
+  },
+  "peerDependencies": {
+    "aws-cdk-lib": "^2.62.0",
+    "constructs": "^10.0.0"
   }
 }

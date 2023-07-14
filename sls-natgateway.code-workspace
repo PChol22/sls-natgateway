@@ -3,12 +3,11 @@
     "editor.defaultFormatter": "esbenp.prettier-vscode",
     "editor.formatOnSave": true,
     "editor.codeActionsOnSave": {
-      "source.fixAll.eslint": true,
+      "source.fixAll.eslint": true
     },
     "search.exclude": {
       "**/coverage": true,
       "**/node_modules": true,
-      "**/.serverless": true,
       "**/build": true,
       "**/bundles": true,
       "**/dist": true,
@@ -23,7 +22,6 @@
       "**/.git/subtree-cache/**": true,
       "**/node_modules/**": true,
       "**/coverage/**": true,
-      "**/.serverless/**": true,
       "**/build/**": true,
       "**/bundles/**": true,
       "**/*.tsbuildinfo": true,
@@ -68,8 +66,16 @@
       "name": "sls-natgateway root"
     },
     {
-      "path": "packages/serverless-configuration",
-      "name": "serverless configuration [library]"
+      "path": "packages/construct",
+      "name": "Construct [package]"
+    },
+    {
+      "path": "packages/sdk",
+      "name": "SDK [package]"
+    },
+    {
+      "path": "packages/shared",
+      "name": "Shared [library]"
     }
   ]
 }
